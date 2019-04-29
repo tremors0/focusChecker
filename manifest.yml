@@ -1,0 +1,12 @@
+---
+applications:
+- instances: 1
+  timeout: 180
+  name: focuschecker
+  buildpack: python_buildpack
+  command: gunicorn --env DJANGO_SETTINGS_MODULE=focuschecker.settings.production focuschecker.wsgi -b 0.0.0.0:$PORT
+  memory: 512M
+  domain: not-used.net
+  host: not-used
+  services:
+    - focus-checker-visualrecogniti-1555334549516
